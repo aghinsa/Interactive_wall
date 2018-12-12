@@ -68,4 +68,5 @@ def calib_master(cap,n=4):
                 break
         hist_master+=hist    
         n-=1
+    cv2.destroyAllWindows()
     return hist_master

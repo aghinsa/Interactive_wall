@@ -14,6 +14,20 @@ def get_video(cap,webcam=False):
         frame=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     return frame
     
-def get_depth():
-    depth=frame_convert2.pretty_depth_cv(freenect.sync_get_depth()[0])
+def get_depth(clip=False):
+    if clip:
+        depth=frame_convert2.pretty_depth_cv(freenect.sync_get_depth()[0])
+    else:
+        depth=freenect.sync_get_depth()[0]
     return depth
+
+def put_text(frame,string,size=5,color=(255,0,0),text_pos=(0,0)):
+    h,w,_=frame.shape
+    text_pos = (h//10,w//2)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    fontScale =size
+    fontColor = color
+    lineType = 2
+    cv2.putText(frame,string,text_pos, font, 
+        fontScale,fontColor,lineType)
+    return frame
