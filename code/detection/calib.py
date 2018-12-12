@@ -6,7 +6,7 @@ import capture
 
 side=config.side
 number_of_rects=config.number_of_rects
-largest=config.largest
+which_contour=1
 
 
 def draw_rectangles(frame,n=number_of_rects):

@@ -14,11 +14,11 @@ def get_video(cap,webcam=False):
         frame=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     return frame
     
-def get_depth(clip=False):
-    if clip:
-        depth=frame_convert2.pretty_depth_cv(freenect.sync_get_depth()[0])
-    else:
-        depth=freenect.sync_get_depth()[0]
+def get_depth(scale=True):
+    depth=freenect.sync_get_depth()[0]
+    if scale:
+        depth=depth/depth.max()
+            
     return depth
 
 def put_text(frame,string,size=5,color=(255,0,0),text_pos=(0,0)):
